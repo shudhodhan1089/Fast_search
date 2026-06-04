@@ -1,0 +1,144 @@
+// import express from "express";
+// import { tavily } from "@tavily/core";
+// import { streamText } from "ai";
+// import { createGroq } from "@ai-sdk/groq";
+// import "dotenv/config";
+
+// import { system_prompt, prompt_template } from "./prompt.js";
+
+// const app = express();
+
+// app.use(express.json());
+
+// const client = tavily({
+//   apiKey: process.env.tavily_api_key,
+// });
+
+// const groq = createGroq({
+//   apiKey: process.env.GROQ_API_KEY,
+// });
+// app.get("/", (req, res) => {
+//   res.send("Backend is running");
+// });
+// app.post("/Conversation", async (req, res) => {
+//   console.log("Request received");
+
+//   try {
+//     const query = req.body.query;
+
+//     console.log("Query:", query);
+
+//     const web_search_response = await client.search(query, {
+//       searchDepth: "advanced",
+//     });
+
+//     console.log("Tavily working");
+
+//     const web_search_results = web_search_response.results;
+
+//     const result = await streamText({
+//       model: groq("llama-3.3-70b-versatile"),
+//       prompt: "Tell me your thoughts about the world",
+//     });
+
+//     console.log("Groq working");
+
+//     for await (const textPart of result.textStream) {
+//       console.log(textPart);
+
+//       res.write(textPart);
+//     }
+
+//     res.end();
+
+//   } catch (error) {
+//     console.log(error);
+
+//     // res.status(500).json({
+//     //   error: error.message,
+//     // });
+//   }
+// });
+
+// app.listen(3000, () => {
+//   console.log("Server running on port 3000");
+// });
+
+
+
+
+// import express from "express";
+// import { tavily } from "@tavily/core";
+// import { streamText } from "ai";
+// import { createGroq } from "@ai-sdk/groq";
+// import "dotenv/config";
+// import { system_prompt } from "./prompt";
+// import { prompt_template } from "./prompt";
+
+// const client = tavily({
+//   apiKey: process.env.tavily_api_key,
+// });
+
+// const groq = createGroq({
+//   apiKey: process.env.GROQ_API_KEY,
+// });
+
+// const app = express();
+
+// app.use(express.json());
+
+// app.get("/", (req, res) => {
+//   res.send("Backend running");
+// });
+
+// app.post("/Conversation", async (req, res) => {
+
+//   const query = req.body.query;
+
+//   const web_serach_response = await client.search(query, {
+//     searchDepth: "advanced",
+//   });
+
+//   console.log("Tavily working");
+
+//   const web_search_results = web_serach_response.results;
+
+//   const prompt = prompt_template
+//     .replace(
+//       "{{WEB_SEARCH_RESULTS}}",
+//       JSON.stringify(web_search_results)
+//     )
+//     .replace("{{USER_QUERY}}", query);
+
+//   const result = await streamText({
+//     model: groq("llama-3.3-70b-versatile"),
+//     prompt: "what is the best resource to learn python",
+//     //system: system_prompt,
+//   });
+
+//   console.log("Groq working");
+
+//   res.header("Cache-Control", "no-cache");
+//   res.header("Content-Type", "text/plain");
+
+//   let finalText = "";
+
+//   for await (const textPart of result.textStream) {
+//     finalText += textPart;
+//   }
+
+//   res.write(finalText);
+
+//   res.write("\n\n-------Sources-------\n");
+
+//   web_search_results.forEach((result) =>
+//     res.write(JSON.stringify(result))
+//   );
+
+//   res.end();
+
+// });
+
+// app.listen(3000, () => {
+//   console.log("Server running on port 3000");
+// });
