@@ -1,6 +1,5 @@
 import type { NextFunction, Request,Response } from "express";
 import { createSupabaseClient } from "./client";
-import { id } from "zod/v4/locales";
 import { prisma } from "./db";
 
 const client = createSupabaseClient();
@@ -13,10 +12,10 @@ export async function middleware(req: Request,res: Response, next: NextFunction)
         try{
         await prisma.user.create({
             data: {
-                id : data.data.user?.id,
-                email : data.data.user?.email,
-                provider: data.data.user?.app_metadata.provider === "google" ? "Google": "Github",
-                name: data.data.user?.user_metadata.name
+                id : userId,
+                email : data.data.user!.email!,
+                provider: data.data.user!.app_metadata.provider === "google" ? "Google": "Github",
+                name: data.data.user!.user_metadata.name
             }
         })
     }
