@@ -191,6 +191,12 @@ function Dashboard() {
               {user?.email}
             </span>
             <button
+              onClick={handleNewConversation}
+              className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            >
+              New Search
+            </button>
+            <button
               onClick={() => {
                 logout();
                 navigate("/auth");
@@ -204,7 +210,11 @@ function Dashboard() {
 
         {/* Chat Area */}
         <div className="flex flex-1 flex-col overflow-hidden">
-          <ChatWindow messages={messages} loading={loading} />
+          <ChatWindow
+            messages={messages}
+            loading={loading}
+            onFollowUpClick={handleSend}
+          />
           <ChatInput onSend={handleSend} loading={loading} />
         </div>
       </div>

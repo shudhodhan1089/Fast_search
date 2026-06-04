@@ -38,7 +38,7 @@ export function ChatInput({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-end gap-2 border-t bg-white p-4"
+      className="flex items-end gap-2 border-t bg-white px-4 py-3"
     >
       <textarea
         ref={textareaRef}
@@ -52,7 +52,7 @@ export function ChatInput({
       <button
         type="submit"
         disabled={loading || !value.trim()}
-        className="shrink-0 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white disabled:opacity-50"
+        className="shrink-0 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white disabled:opacity-50 hover:bg-slate-800 transition-colors"
       >
         {loading ? "Sending..." : "Send"}
       </button>
