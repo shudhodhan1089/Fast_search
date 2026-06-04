@@ -1,0 +1,41 @@
+🚀 Fast Search Backend running on port 3001
+[middleware] User upsert failed: 60 | 
+61 | Example:
+62 |   await prisma.$executeRawUnsafe(\`ALTER USER prisma WITH PASSWORD '\${password}'\`)
+63 | 
+64 | More Information: https://pris.ly/d/execute-raw
+65 | `)}var di=({clientMethod:e,activeProvider:t})=>r=>{let n="",i;if(mr(r))n=r.sql,i={values:tt(r.values),__prismaRawParameters__:!0};else if(Array.isArray(r)){let[o,...s]=r;n=o,i={values:tt(s||[]),__prismaRawParameters__:!0}}else switch(t){case"sqlite":case"mysql":{n=r.sql,i={values:tt(r.values),__prismaRawParameters__:!0};break}case"cockroachdb":case"postgresql":case"postgres":{n=r.text,i={values:tt(r.values),__prismaRawParameters__:!0};break}case"sqlserver":{n=gl(r),i={values:tt(r.values),__prismaRawParameters__:!0};break}default:throw new Error(`The ${t} provider does not support ${e}`)}return i?.values?El(`prisma.${e}(${n}, ${i.values})`):El(`prisma.${e}(${n})`),{query:n,parameters:i}},Tl={requestArgsToMiddlewareArgs(e){return[e.strings,...e.values]},middlewareArgsToRequestArgs(e){let[t,...r]=e;return new Pl.Sql(t,r)}},Sl={requestArgsToMiddlewareArgs(e){return[e]},middlewareArgsToRequestArgs(e){return e[0]}};function mi(e){return function(r,n){let i,o=(s=e)=>{try{return s===void 0||s?.kind==="itx"?i??=vl(r(s
+
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.upsert()` invocation in
+/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/middleware.ts:14:31
+
+  11 
+  12 if (userId) {
+  13     try {
+→ 14         await prisma.user.upsert(
+Unique constraint failed on the fields: (`email`)
+       meta: {
+  modelName: "User",
+  driverAdapterError: 637 |       this.onError(e);
+638 |     }
+639 |   }
+640 |   onError(error) {
+641 |     debug("Error in performIO: %O", error);
+642 |     throw new DriverAdapterError(convertDriverError(error));
+                ^
+DriverAdapterError: UniqueConstraintViolation
+ cause: [Object ...],
+
+      at onError (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/adapter-pg/dist/index.mjs:642:11)
+      at performIO (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/adapter-pg/dist/index.mjs:637:12)
+      at async queryRaw (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/adapter-pg/dist/index.mjs:568:41)
+,
+},
+ clientVersion: "7.8.0",
+       code: "P2002"
+
+      at handleRequestError (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/client/runtime/client.js:65:8286)
+      at handleAndLogRequestError (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/client/runtime/client.js:65:7581)
+      at request (/Users/shudhodhanjogdand/Developer/StudioProjects/Fast_Search/BackEnd/node_modules/@prisma/client/runtime/client.js:65:7288)
+
