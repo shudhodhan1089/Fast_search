@@ -225,22 +225,16 @@ http://localhost:3000
 ## Login Page
 
 > Add Screenshot Here
+ <img width="1494" height="939" alt="2026-06-05_17-35-27" src="https://github.com/user-attachments/assets/564ab287-b1e4-4ee7-ba0b-b0e36f86c34d" />
 
-```text
-<img width="1494" height="939" alt="image" src="https://github.com/user-attachments/assets/0b2dcd51-3334-411e-99b0-57df8e51c65a" />
-/docs/screenshots/login.png
-```
 
 ---
 
 ## Dashboard
 
 > Add Screenshot Here
-
-```text
 <img width="1206" height="934" alt="image" src="https://github.com/user-attachments/assets/19bcb8a5-d648-4ce5-893e-6b4de586bbc5" />
-/docs/screenshots/dashboard.png
-```
+
 
 ---
 
@@ -248,10 +242,10 @@ http://localhost:3000
 
 > Add Screenshot Here
 
-```text
+
 <img width="1489" height="963" alt="image" src="https://github.com/user-attachments/assets/001a6c5c-7a1f-4e69-8dac-c1ae22427b2d" />
-/docs/screenshots/search-results.png
-```
+
+
 
 ---
 
